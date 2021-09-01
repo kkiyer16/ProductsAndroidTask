@@ -25,10 +25,9 @@ class ProductsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProductsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.loader.visibility = View.VISIBLE
         productsArrayList = ArrayList()
-        binding.productsRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.productsRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
         adapter = ProductsAdapter(productsArrayList, applicationContext)
         binding.productsRecyclerView.adapter = adapter
         getProductIds()

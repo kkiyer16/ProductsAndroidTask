@@ -8,11 +8,16 @@ import io.ktor.http.*
 class FetchProductDetails {
     public suspend fun fetchJson(url: String): List<String> {
         val httpClient: HttpClient = HttpClient()
-        val response = httpClient.request<String> {
-            url(url)
-            method = HttpMethod.Get
+        try {
+            val response = httpClient.request<String> {
+                url(url)
+                method = HttpMethod.Get
+            }
+            return processData(response)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
-        return processData(response)
+        return ArrayList<String>()
     }
 
     private fun processData(response: String): ArrayList<String> {
@@ -24,7 +29,6 @@ class FetchProductDetails {
             val idp = id.substring(1, id.length - 1)
             productIds.add(idp)
         }
-        println(productIds)
         return productIds
     }
 }
