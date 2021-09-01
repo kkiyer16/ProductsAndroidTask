@@ -1,6 +1,6 @@
 package com.qstest.models
 
-data class ProductsModel(
+data class Product(
     var productName: String = "",
     var productPrice: String = "",
     var productImage: String = "",

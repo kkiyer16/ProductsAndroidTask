@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_marginBottom="8dp"
+    android:theme="@style/Theme.MaterialComponents.Light"
     app:cardCornerRadius="10dp"
     app:cardElevation="5dp"
     app:strokeWidth="1.5dp">
@@ -22,20 +23,23 @@
             <ImageView
                 android:id="@+id/product_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/tv_product_title"
-            android:layout_width="wrap_content"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@id/image_card_view"
+            android:ellipsize="none"
+            android:scrollHorizontally="false"
             android:text="product title"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_product_description"
@@ -47,47 +51,41 @@
             android:layout_toRightOf="@id/image_card_view"
             android:text="No product description"
             android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
 
         <RelativeLayout
+            android:id="@+id/rel1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_alignParentRight="true"
             android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
             android:layout_toRightOf="@id/tv_product_title"
-            android:gravity="right">
-
-            <ImageView
-                android:id="@+id/iv_rupee"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/tv_product_price"
-                android:src="@drawable/ic_rupee"
-                app:tint="@color/black" />
+            android:gravity="end">
 
             <TextView
                 android:id="@+id/tv_product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
+                android:drawableLeft="@drawable/ic_rupee"
+                android:gravity="right"
                 android:text="100"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tv_product_price_dash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="15dp"
-                android:text="-"
-                android:visibility="gone"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_product_price_dash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:text="-"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
 
     </RelativeLayout>
 

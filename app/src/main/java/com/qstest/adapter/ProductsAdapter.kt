@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.qstest.databinding.ProductsRecyclerViewLayoutBinding
-import com.qstest.models.ProductsModel
+import com.qstest.models.Product
 import com.qstest.utils.ProductsHolder
 
-class ProductsAdapter(var productsList: ArrayList<ProductsModel>, var context: Context) :
+class ProductsAdapter(var productsList: ArrayList<Product>, var context: Context) :
     RecyclerView.Adapter<ProductsHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsHolder {
         val binding = ProductsRecyclerViewLayoutBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -19,11 +19,21 @@ class ProductsAdapter(var productsList: ArrayList<ProductsModel>, var context: C
 
     override fun onBindViewHolder(holder: ProductsHolder, position: Int) {
         val products = productsList[position]
-        holder.binding.tvProductTitle.text = products.productName
-        holder.binding.tvProductDescription.text = products.productDesc
+        if(products.productName == "null"){
+            holder.binding.tvProductTitle.text = "No Product title"
+        }else {
+            holder.binding.tvProductTitle.text = products.productName
+        }
+        if(products.productDesc == "null"){
+            holder.binding.tvProductDescription.text = "No product description"
+        }else {
+            holder.binding.tvProductDescription.text = products.productDesc
+        }
         if(products.productPrice == "null"){
             holder.binding.tvProductPriceDash.visibility = View.VISIBLE
+            holder.binding.tvProductPrice.visibility = View.GONE
         }else{
+            holder.binding.tvProductPriceDash.visibility = View.GONE
             holder.binding.tvProductPrice.text = products.productPrice
         }
         if(products.productImage != "null"){
@@ -31,7 +41,7 @@ class ProductsAdapter(var productsList: ArrayList<ProductsModel>, var context: C
         }
     }
 
-    fun update(productsList: ArrayList<ProductsModel>) {
+    fun update(productsList: ArrayList<Product>) {
         this.productsList = productsList
         notifyDataSetChanged()
 
